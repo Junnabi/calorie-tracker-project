@@ -1,7 +1,7 @@
 import components.map.Map;
 import components.map.Map1L;
 
-public class CalorieTracker {
+public class CalorieTrackerProject {
 
     private static class FoodRecord {
         private final String name;
@@ -31,7 +31,7 @@ public class CalorieTracker {
         this.dateSizes = new Map1L<>();
     }
 
-    public CalorieTracker() {
+    public CalorieTrackerProject() {
         this.createNewRep();
     }
 
@@ -136,7 +136,7 @@ public class CalorieTracker {
 
     public static void main(String[] args) {
 
-        CalorieTracker tracker = new CalorieTracker();
+        CalorieTrackerProject tracker = new CalorieTrackerProject();
 
         String today = "2026-02-26";
         String yesterday = "2026-02-25";
