@@ -65,4 +65,27 @@ public interface CalorieTrackerKernel extends Standard<CalorieTracker> {
      */
     int totalCaloriesOn(String date);
 
+    /**
+     * Reports whether there is a food entry with the given name on the given
+     * date.
+     *
+     * @param name
+     *            name of the food
+     * @param date
+     *            the date being checked
+     * @return true iff there is a matching food entry
+     * @requires name is valid and date is valid
+     * @ensures hasEntry = true iff there is a food entry with the given name on
+     *          the given date
+     */
+    boolean hasEntry(String name, String date);
+
+    /**
+     * Reports the number of food entries in {@code this}.
+     *
+     * @return the total number of food entries
+     * @ensures entryCount = the number of entries in {@code this}
+     */
+    int entryCount();
+
 }
