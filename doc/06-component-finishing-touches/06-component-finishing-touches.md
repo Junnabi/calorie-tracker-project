@@ -386,12 +386,6 @@ like to accomplish that, you will need to make GitHub releases after each pull
 request merge (or at least tag your commits). This is not required.
 
 
-## 2026.04.24
-
-### Added
-- Designed JUnit tests for CalorieTracker component
-- Created two use case files for CalorieTracker component
-
 
 ### Submission
 

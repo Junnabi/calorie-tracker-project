@@ -77,47 +77,6 @@ the following form: YYYY.0M.0D.
 - Created initial drafts of the six portfolio assessments
 - Added READMEs to key folders like `test` and `lib` to explain their purpose
 
-<<<<<<< Updated upstream
-=======
-## [2026.04.15]
-
-### Added
-
-- Created class CalorieTracker1 extending CalorieTrackerSecondary
-- Implemented kernel methods 'addRecord', 'removeRecord', and 'totalCaloriesOn'
-- Added constructor and Standard methods 'newInstance', 'clear', and 'transferFrom'
-
-## 2026.03.31
-
-### Added
-- Designed abstract class for CalorieTracker component
-- Implemented secondary methods 'isOverGoal' and 'isBelowGoal' in
-CalorieTrackerSecondary.java
-## 2026.03.10
-
-### Added
-- Designed kernel and enhanced interfaces for CalorieTracker component
-
-
-## 2026.04.24
-
-
-### Added
-- Added kernel methods 'hasEntry' and 'entryCount'
-
-### Updated
-- Revised CalorieTracker method names
-- Revised assertion error messages
-### Added
-- Implemented common methods in CalorieTrackerSecondary
-
-
-### Added
-- Added kernel methods such as hasEntry and entryCount
-- Added change log for when I first completed the assignment.
-
-### Updated
-- Revised CalorieTracker component design
 
 
 ## 2026.04.24
@@ -127,7 +86,6 @@ CalorieTrackerSecondary.java
 - Created two use case files for CalorieTracker component
 
 
->>>>>>> Stashed changes
 [unreleased]: https://github.com/jrg94/portfolio-project/compare/v2024.08.07...HEAD
 [2024.08.07]: https://github.com/jrg94/portfolio-project/compare/v2024.01.07...v2024.08.07
 [2024.01.07]: https://github.com/jrg94/portfolio-project/releases/tag/v2024.01.07
