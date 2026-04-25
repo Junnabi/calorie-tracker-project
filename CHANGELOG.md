@@ -85,6 +85,13 @@ the following form: YYYY.0M.0D.
 - Implemented kernel methods 'addRecord', 'removeRecord', and 'totalCaloriesOn'
 - Added constructor and Standard methods 'newInstance', 'clear', and 'transferFrom'
 
+## 2026.03.31
+
+### Added
+- Designed abstract class for CalorieTracker component
+- Implemented secondary methods 'isOverGoal' and 'isBelowGoal' in
+CalorieTrackerSecondary.java
+
 
 ## 2026.04.24
 
@@ -95,6 +102,11 @@ the following form: YYYY.0M.0D.
 ### Updated
 - Revised CalorieTracker method names
 - Revised assertion error messages
+### Added
+- Implemented common methods in CalorieTrackerSecondary
+
+
+
 
 [unreleased]: https://github.com/jrg94/portfolio-project/compare/v2024.08.07...HEAD
 [2024.08.07]: https://github.com/jrg94/portfolio-project/compare/v2024.01.07...v2024.08.07
