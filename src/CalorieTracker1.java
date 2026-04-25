@@ -15,10 +15,12 @@ import components.map.Map1L;
  * @correspondence Each date maps to a list of food records. Each record
  *                 corresponds to one food entry with a name, calories, and
  *                 date.
+ *
+ * @author Jun Jin
  */
 public class CalorieTracker1 extends CalorieTrackerSecondary {
 
-    private static final class FoodRecord {
+    private static final class FoodEntry {
         private final String name;
         private final int calories;
 
@@ -30,14 +32,15 @@ public class CalorieTracker1 extends CalorieTrackerSecondary {
          * @param calories
          *            the calories
          */
-        private FoodRecord(String name, int calories) {
+        private FoodEntry(String name, int calories) {
             this.name = name;
             this.calories = calories;
         }
     }
 
     private static final int DEFAULT_CAPACITY = 4;
-    private Map<String, FoodRecord[]> recordsByDate;
+
+    private Map<String, FoodEntry[]> recordsByDate;
     private Map<String, Integer> dateSizes;
 
     private void createNewRep() {
@@ -86,23 +89,23 @@ public class CalorieTracker1 extends CalorieTrackerSecondary {
      */
 
     @Override
-    public void addRecord(String name, int calories, String date) {
-        assert name != null : "name not null";
-        assert calories >= 0 : "calories >= 0";
-        assert date != null : "date not null";
+    public void addEntry(String name, int calories, String date) {
+        assert name != null : "Violation of: name is not null";
+        assert calories >= 0 : "Violation of: calories >= 0";
+        assert date != null : "Violation of: date is not null";
 
         if (!this.recordsByDate.hasKey(date)) {
-            FoodRecord[] recordsForDate = new FoodRecord[DEFAULT_CAPACITY];
-            recordsForDate[0] = new FoodRecord(name, calories);
+            FoodEntry[] recordsForDate = new FoodEntry[DEFAULT_CAPACITY];
+            recordsForDate[0] = new FoodEntry(name, calories);
 
             this.recordsByDate.add(date, recordsForDate);
             this.dateSizes.add(date, 1);
         } else {
-            FoodRecord[] recordsForDate = this.recordsByDate.value(date);
+            FoodEntry[] recordsForDate = this.recordsByDate.value(date);
             int spaceUsed = this.dateSizes.value(date);
 
             if (spaceUsed == recordsForDate.length) {
-                FoodRecord[] biggerArray = new FoodRecord[recordsForDate.length
+                FoodEntry[] biggerArray = new FoodEntry[recordsForDate.length
                         * 2];
                 for (int i = 0; i < recordsForDate.length; i++) {
                     biggerArray[i] = recordsForDate[i];
@@ -113,7 +116,7 @@ public class CalorieTracker1 extends CalorieTrackerSecondary {
                 this.recordsByDate.add(date, recordsForDate);
             }
 
-            recordsForDate[spaceUsed] = new FoodRecord(name, calories);
+            recordsForDate[spaceUsed] = new FoodEntry(name, calories);
 
             this.dateSizes.remove(date);
             this.dateSizes.add(date, spaceUsed + 1);
@@ -121,14 +124,14 @@ public class CalorieTracker1 extends CalorieTrackerSecondary {
     }
 
     @Override
-    public boolean removeRecord(String name, String date) {
-        assert name != null : "name not null";
-        assert date != null : "date not null";
+    public boolean removeEntry(String name, String date) {
+        assert name != null : "Violation of: name is not null";
+        assert date != null : "Violation of: date is not null";
 
         boolean removed = false;
 
         if (this.recordsByDate.hasKey(date)) {
-            FoodRecord[] recordsForDate = this.recordsByDate.value(date);
+            FoodEntry[] recordsForDate = this.recordsByDate.value(date);
             int used = this.dateSizes.value(date);
 
             for (int i = 0; i < used && !removed; i++) {
@@ -153,12 +156,12 @@ public class CalorieTracker1 extends CalorieTrackerSecondary {
 
     @Override
     public int totalCaloriesOn(String date) {
-        assert date != null : "date not null";
+        assert date != null : "Violation of: date is not null";
 
         int sum = 0;
 
         if (this.recordsByDate.hasKey(date)) {
-            FoodRecord[] recordsForDate = this.recordsByDate.value(date);
+            FoodEntry[] recordsForDate = this.recordsByDate.value(date);
             int used = this.dateSizes.value(date);
 
             for (int i = 0; i < used; i++) {
@@ -167,6 +170,45 @@ public class CalorieTracker1 extends CalorieTrackerSecondary {
         }
 
         return sum;
+    }
+
+    @Override
+    public boolean hasEntry(String name, String date) {
+        assert name != null : "Violation of: name is not null";
+        assert date != null : "Violation of: date is not null";
+
+        boolean found = false;
+
+        if (this.recordsByDate.hasKey(date)) {
+            FoodEntry[] entriesForDate = this.recordsByDate.value(date);
+            int used = this.dateSizes.value(date);
+
+            for (int i = 0; i < used && !found; i++) {
+                if (entriesForDate[i].name.equals(name)) {
+                    found = true;
+                }
+            }
+        }
+
+        return found;
+    }
+
+    @Override
+    public int entryCount() {
+        int result = 0;
+
+        Map<String, Integer> temp = this.dateSizes.newInstance();
+
+        while (this.dateSizes.size() > 0) {
+            Map.Pair<String, Integer> pair = this.dateSizes.removeAny();
+
+            result += pair.value();
+            temp.add(pair.key(), pair.value());
+        }
+
+        this.dateSizes.transferFrom(temp);
+
+        return result;
     }
 
 }
