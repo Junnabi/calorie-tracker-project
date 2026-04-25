@@ -91,6 +91,10 @@ the following form: YYYY.0M.0D.
 - Designed abstract class for CalorieTracker component
 - Implemented secondary methods 'isOverGoal' and 'isBelowGoal' in
 CalorieTrackerSecondary.java
+## 2026.03.10
+
+### Added
+- Designed kernel and enhanced interfaces for CalorieTracker component
 
 
 ## 2026.04.24
@@ -106,6 +110,12 @@ CalorieTrackerSecondary.java
 - Implemented common methods in CalorieTrackerSecondary
 
 
+### Added
+- Added kernel methods such as hasEntry and entryCount
+- Added change log for when I first completed the assignment.
+
+### Updated
+- Revised CalorieTracker component design
 
 
 [unreleased]: https://github.com/jrg94/portfolio-project/compare/v2024.08.07...HEAD
