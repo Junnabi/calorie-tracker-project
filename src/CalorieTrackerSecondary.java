@@ -13,6 +13,17 @@ public abstract class CalorieTrackerSecondary implements CalorieTracker {
      * Common methods (from Object) -------------------------------------------
      */
 
+    @Override
+    public String toString() {
+        String result = "CalorieTracker with " + this.entryCount() + " entries";
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return this == obj;
+    }
+
     /*
      * Other non-kernel methods -----------------------------------------------
      */
